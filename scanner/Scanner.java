@@ -2,7 +2,7 @@ package scanner;
 
 public class Scanner {
 
-  pubilc static void main() {
+  public static void main(String args[]) {
     //TODO
     //get file input
     //call scan until end of file is reached

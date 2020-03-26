@@ -1,16 +1,20 @@
 package scanner;
 
+import java.util.Collections;
+import java.util.HashSet;
+
 class Link {
 
   Node nextNode;
 
-  Set<String> validInputs;
+  HashSet<String> validInputs;
 
   boolean inputIsValid(String fileInput) {
     //TODO
+    return true; //temporary line only; replace later
   }
 
-  Link(Set<String> validInputs, Node nextNode) {
+  Link(HashSet<String> validInputs, Node nextNode) {
     this.validInputs = validInputs;
     this.nextNode = nextNode;
   }

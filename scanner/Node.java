@@ -7,9 +7,9 @@ class Node {
 
   public boolean isFinal;
 
-  Set<Link> links;
+  HashSet<Link> links;
 
-  Node(boolean isFinal, links) {
+  Node(boolean isFinal, HashSet<Link> links) {
     this.isFinal = isFinal;
     this.links = links;
   }
