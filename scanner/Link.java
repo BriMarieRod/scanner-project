@@ -9,7 +9,7 @@ class Link {
 
   HashSet<String> validInputs;
 
-  boolean inputIsValid(String fileInput) {
+  boolean checkInput(String fileInput) {
     //TODO
     return true; //temporary line only; replace later
   }
