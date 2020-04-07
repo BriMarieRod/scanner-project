@@ -12,7 +12,7 @@ class Link {
     return true; //temporary line only; replace later
   }
 
-  Link(/*HashSet<String>*/char validInputs, Node nextNode) {
+  Link(/*HashSet<String>*/Node nextNode, char validInputs) {
     this.validInputs = validInputs;
     this.nextNode = nextNode;
   }
