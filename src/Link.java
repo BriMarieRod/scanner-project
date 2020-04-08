@@ -8,7 +8,7 @@ class Link {
   //only one validInput per link rather than LinkedList
   //a string is used for certain cases, like when the input is non-newline
 
-  Link(String validInput, Node nextNode) {
+  Link(Node nextNode, String validInput) {
     this.validInput = validInput;
     this.nextNode = nextNode;
   }
@@ -16,13 +16,13 @@ class Link {
   boolean checkInput(String fileInput) {
     switch(fileInput) {
       case "non-*":
-        if(fileInput[0] != '*')
+        if(fileInput.charAt(0) != '*')
           return true;
       case "non-newline":
-        if(fileInput[0] != '\n')
+        if(fileInput.charAt(0) != '\n')
           return true;
       default:
-        if(fileInput[0] == this.validInput)
+        if(fileInput == (this.validInput))
           return true;
     }
     return false;
