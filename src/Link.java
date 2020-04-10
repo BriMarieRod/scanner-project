@@ -25,9 +25,11 @@ class Link {
         if(fileInput.charAt(0) != '/')
           return true;
       case "letter":
-        //TODO
+        if(Character.isLetter(fileInput.charAt(0)))
+          return true;
       case "digit":
-        //TODO
+      if(Character.isDigit(fileInput.charAt(0)))
+        return true;
       default:
         if(fileInput == (this.validInput))
           return true;
