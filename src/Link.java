@@ -21,6 +21,13 @@ class Link {
       case "non-newline":
         if(fileInput.charAt(0) != '\n')
           return true;
+      case "non-/":
+        if(fileInput.charAt(0) != '/')
+          return true;
+      case "letter":
+        //TODO
+      case "digit":
+        //TODO
       default:
         if(fileInput == (this.validInput))
           return true;
