@@ -7,13 +7,11 @@ public class Scanner {
 
   public static void main(String args[]) {
     //TODO
-    //get file input
-    File file = new File("test text.txt");
     Scanner sc = new Scanner();
     Graph gra = new Scanner.Graph();
 
     String output="( ";
-    try (FileReader fr = new FileReader(file)) {
+    try (FileReader fr = new FileReader(args[0])) {
       int content;
       if((content = fr.read()) != -1) {
       output =  sc.scan(fr,content, gra.start, gra, output);
@@ -24,6 +22,9 @@ public class Scanner {
 
   }
 
+  //----------------------------------------------------------------------
+  //Scan function
+  //
   public String scan(FileReader fr,int content,Node point,Graph gra, String output) {
     //TODO
     try{
@@ -68,6 +69,9 @@ public class Scanner {
   }
 
 
+  //----------------------------------------------------------------------
+  //Creation of the graph
+  //
   static class Graph {
     //TODO
     Node start;
@@ -117,12 +121,12 @@ public class Scanner {
 
 
       //all the links from node 2
-      /*HashSet<Link> lk2_3 = */node2.addLink(node3,"/");
-      /*HashSet<Link> lk2_4 = */node2.addLink(node4,"*");
+      node2.addLink(node3,"/");
+      node2.addLink(node4,"*");
 
       //all the links from node 3
-      /*HashSet<Link> lk3_1 = */node3.addLink(node1,"\n");
-      /*HashSet<Link> lk3_3 = */node3.addLink(node3,"non-newline");
+      node3.addLink(node1,"\n");
+      node3.addLink(node3,"non-newline");
 
       //all the links from node 4
       node4.addLink(node4,"non-*");
