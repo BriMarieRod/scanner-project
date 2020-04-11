@@ -32,8 +32,8 @@ class Link {
       case "non-newline":
         if(fileInput.charAt(0) != '\n')
           return true;
-      case "non-/":
-        if(fileInput.charAt(0) != '/')
+      case "non-/ or *":
+        if(fileInput.charAt(0) != '/' && fileInput.charAt(0) != '*')
           return true;
       case "digit":
         if(Character.isDigit(fileInput.charAt(0)))
