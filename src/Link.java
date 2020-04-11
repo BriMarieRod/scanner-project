@@ -14,6 +14,13 @@ class Link {
   }
 
   boolean checkInput(String fileInput) {
+    ;
+    if(Character.isLetter(fileInput.charAt(0))){
+      fileInput= "letter";
+    }
+    if(Character.isDigit(fileInput.charAt(0))){
+      fileInput= "digit";
+    }
     switch(fileInput) {
       case "non-*":
         if(fileInput.charAt(0) != '*')
@@ -24,14 +31,10 @@ class Link {
       case "non-/":
         if(fileInput.charAt(0) != '/')
           return true;
-      case "letter":
-        if(Character.isLetter(fileInput.charAt(0)))
-          return true;
-      case "digit":
-      if(Character.isDigit(fileInput.charAt(0)))
-        return true;
+
+
       default:
-        if(fileInput == (this.validInput))
+        if(fileInput.equals(this.validInput))
           return true;
     }
     return false;
