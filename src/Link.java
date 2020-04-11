@@ -14,18 +14,18 @@ class Link {
   }
 
   boolean checkInput(String fileInput) {
-    ;
-    if((fileInput.equals("*"))){
 
+    /*if(fileInput.equals("non-newline") && fileInput.charAt(0) != '\n') {
+      return true;
     }
     else if(Character.isLetter(fileInput.charAt(0))){
       fileInput= "letter";
     }
     else if(Character.isDigit(fileInput.charAt(0))){
       fileInput= "digit";
-    }
+    }*/
 
-    /*switch(fileInput) {
+    switch(validInput) {
       case "non-*":
         if(fileInput.charAt(0) != '*')
           return true;
@@ -35,13 +35,18 @@ class Link {
       case "non-/":
         if(fileInput.charAt(0) != '/')
           return true;
+      case "digit":
+        if(Character.isDigit(fileInput.charAt(0)))
+          return true;
+      case "letter":
+      if(Character.isLetter(fileInput.charAt(0)))
+        return true;
 
-
-      default:*/
+      default:
         if(fileInput.equals(this.validInput)) {
           return true;
         }
+    }
     return false;
   }
-
 }
