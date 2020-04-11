@@ -55,7 +55,10 @@ public class Scanner {
             point = gra.start;
             output = scan(fr,content, point, gra, output);
             return output;
-          } else {
+          } else if(point == gra.start) {
+            return output;
+          }
+          else {
              output =output + "input error,";
           }
         }
