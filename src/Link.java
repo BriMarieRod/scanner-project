@@ -15,13 +15,17 @@ class Link {
 
   boolean checkInput(String fileInput) {
     ;
-    if(Character.isLetter(fileInput.charAt(0))){
+    if((fileInput.equals("*"))){
+
+    }
+    else if(Character.isLetter(fileInput.charAt(0))){
       fileInput= "letter";
     }
-    if(Character.isDigit(fileInput.charAt(0))){
+    else if(Character.isDigit(fileInput.charAt(0))){
       fileInput= "digit";
     }
-    switch(fileInput) {
+
+    /*switch(fileInput) {
       case "non-*":
         if(fileInput.charAt(0) != '*')
           return true;
@@ -33,10 +37,10 @@ class Link {
           return true;
 
 
-      default:
-        if(fileInput.equals(this.validInput))
+      default:*/
+        if(fileInput.equals(this.validInput)) {
           return true;
-    }
+        }
     return false;
   }
 

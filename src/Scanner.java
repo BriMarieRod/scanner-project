@@ -27,7 +27,7 @@ public class Scanner {
 
   public String scan(FileReader fr,int content,Node point,Graph gra, String output) {
     //TODO
-
+    try{
     String input = String.valueOf((char) content);
     boolean check = false;
 
@@ -36,13 +36,13 @@ public class Scanner {
         point = L.nextNode;
         check = true;
 
-        try{
+
           if((content = fr.read()) != -1){
             input = String.valueOf((char) content);
             output = scan(fr,content, point, gra, output);
             return output;
           }
-        }catch (IOException e){}
+
 
       }
 
@@ -58,8 +58,10 @@ public class Scanner {
              output =output + "input error,";
           }
         }
+    }catch (IOException e){}
     return output;
-      }
+
+  }
 
 
   static class Graph {
