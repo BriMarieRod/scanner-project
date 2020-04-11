@@ -12,9 +12,11 @@ public class Scanner {
     Scanner sc = new Scanner();
     Graph gra = new Scanner.Graph();
 
+    System.out.println("Hello");
 
     String output="( ";
     try (FileReader fr = new FileReader(file)) {
+      System.out.println("Test");
       int content;
       if((content = fr.read()) != -1) {
       output =  sc.scan(fr,content, gra.start, gra, output);
@@ -34,6 +36,7 @@ public class Scanner {
     for (Link L : point.links) {
       if (L.checkInput(input)) {
         point = L.nextNode;
+        System.out.println(input);
         check = true;
 
 
