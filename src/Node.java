@@ -6,7 +6,7 @@ class Node {
 
   public boolean isFinal;
   String token;
-  HashSet<Link> links = new HashSet();
+  HashSet<Link> links = new HashSet<Link>();
   //I'm using a hashset because an array requires you know how many elements it will contain
   //Link links[];
 
