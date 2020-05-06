@@ -1,26 +1,34 @@
-import java.io.File;
+//Rider Jefferies & Brianna Rodriguez
 import java.io.FileReader;
 import java.io.IOException;
 
 
 public class Scanner {
 
-  public static void main(String args[]) {
+  /*public static void main(String args[]) {
     //TODO
     Scanner sc = new Scanner();
     Graph gra = new Scanner.Graph();
 
-    String output="( ";
-    try (FileReader fr = new FileReader(args[0])) {
+    String output="";
+    try (FileReader fr = new FileReader("test text.txt")) {
       int content;
       if((content = fr.read()) != -1) {
       output =  sc.scan(fr,content, gra.start, gra, output);
     }
-    }catch(IOException e){}
+    }catch(IOException e){System.out.println("file not found");}
     //call scan until end of file is reached
-    System.out.println(output + ")");
+    System.out.println(output);
 
-  }
+
+
+  }*/
+  //////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////
+  //parser functions
+
+
+
 
   //----------------------------------------------------------------------
   //Scan function
@@ -33,6 +41,7 @@ public class Scanner {
 
     for (Link L : point.links) {
       if (L.checkInput(input)) {
+        output = output + input;
         //System.out.println(L.nextNode);
         point = L.nextNode;
         //System.out.println(input);
@@ -41,6 +50,7 @@ public class Scanner {
 
           if((content = fr.read()) != -1){
             input = String.valueOf((char) content);
+
             output = scan(fr,content, point, gra, output);
             return output;
           }
@@ -52,7 +62,9 @@ public class Scanner {
 
         if (check == false) {
           if (point.isFinal) {
-            output = output + (point.token) + ",";
+            output = output + " "+(point.token);
+            //output = output + (point.token) + ",";
+
             point = gra.start;
             output = scan(fr,content, point, gra, output);
             return output;
@@ -98,6 +110,7 @@ public class Scanner {
       Node node14 = new Node(true,"number");
       Node node15 = new Node(true,"number");
       Node node16 = new Node(true,"id");
+
 
 
 
@@ -155,8 +168,6 @@ public class Scanner {
       node16.addLink(node16,"digit");
 
   }
-
-
   }
 
 }
