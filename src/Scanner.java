@@ -41,7 +41,8 @@ public class Scanner {
 
     for (Link L : point.links) {
       if (L.checkInput(input)) {
-        output = output + input;
+        if(!((input.equals("\n")) || (input.equals("\t")))){
+        output = output + input;}
         //System.out.println(L.nextNode);
         point = L.nextNode;
         //System.out.println(input);
