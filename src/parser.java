@@ -104,8 +104,8 @@ public class parser {
 
     int expr(String[] ary, int i){
         System.out.println("                <expr>");
-        term(ary,i);
-        term_tail(ary,i+2);
+        i =term(ary,i);
+        i = term_tail(ary,i+2);
         System.out.println("                </expr>");
         return i;
     }
@@ -118,25 +118,32 @@ public class parser {
         return i;
     }
 
-    void term_tail(String[] ary,int i){
+    int term_tail(String[] ary,int i){
         System.out.println("                    <term_tail>");
         if(i+2<= ary.length) {
             if ((ary[i].equals("plus")) || (ary[i].equals("minus"))) {
+
                 add_op(ary, i);
                 i = term(ary, i + 2);
                 term_tail(ary, i);
-            } else {
-                return;
+
             }
         }
         System.out.println("                    </term_tail>");
+            return i;
     }
 
     int factor(String[] ary, int i){
         System.out.println("                    <factor>");
         //lparen <expr> rparen |id|number
         if(ary[i].equals("lParen")){
-            expr(ary,i+2);
+            System.out.println(ary[i-1]);
+            i = expr(ary,i+2);
+            //System.out.println(")");
+            System.out.println(ary[i+3]);
+            System.out.println("                    </factor>");
+
+            return i+4;
         }
         else if(ary[i].equals("id")){
             identifier(ary,i);
