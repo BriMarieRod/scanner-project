@@ -55,10 +55,12 @@ public class Parser {
         if (ary.length > 0) {
 			indent(n);
             System.out.printf("<stmt_list>\n");
-            stmt(ary, n+1);
+			if(ary.length > 2) {
+				stmt(ary, n+1);
+			}
+			stmt_list(Arrays.copyOfRange(ary, 2, ary.length), n+1);
 			indent(n);
             System.out.printf("</stmt_list>\n");
-			stmt_list(Arrays.copyOfRange(ary, 1, ary.length), n+1);
         }else{
 			return;
 		}
@@ -78,8 +80,7 @@ public class Parser {
         else if(ary[0].contains("write")){
             writeFnk(ary, n+1);
         }
-        else if(ary[1].contains("id")){
-
+        else if(ary[1].contains("id") && ary.length >= 4){
             if(ary[3].contains("assign")){
                 System.out.printf("/////////////////////\n");
                 expr(ary, n+1, 5);
@@ -131,6 +132,7 @@ public class Parser {
         System.out.printf("<expr>\n");
         i = term(ary, n+1, i);
         i = term_tail(ary, n+1, i+2);
+		indent(n);
         System.out.printf("</expr>\n");
         return i;
     }
@@ -140,6 +142,7 @@ public class Parser {
         System.out.printf("<term>\n");
         i = factor(ary, n+1, i);
         fact_tail(ary, n+1, i+2);
+		indent(n);
         System.out.printf("</term>\n");
         return i;
     }
@@ -208,11 +211,11 @@ public class Parser {
         System.out.printf("<add_op>\n");
         if(ary[i].contains("plus")){
 			indent(n+1);
-            System.out.printf("<plus>");
+            System.out.printf("<plus>\n");
 			indent(n+2);
             System.out.printf(ary[i-1] + "\n");
 			indent(n+1);
-            System.out.printf("</plus>" + "\n");
+            System.out.printf("</plus>\n");
         }
         else if(ary[i].contains("minus")){
 			indent(n+1);
@@ -220,7 +223,7 @@ public class Parser {
 			indent(n+2);
             System.out.printf(ary[i-1] + "\n");
 			indent(n+1);
-            System.out.printf("</minus>");
+            System.out.printf("</minus>\n");
         }
 		indent(n);
         System.out.printf("</add_op>\n");
