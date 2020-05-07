@@ -62,13 +62,13 @@ public class Parser {
         System.out.printf("<stmt>\n");
 		//indent(n+1);
 		//System.out.printf(ary[0] + "\n");
-        if(ary[0].contains("read")){
+        if(ary[0].equals("read")){
             readFnk(ary, n+1);
-            if(ary[1].contains("id")){
+            if(ary[1].equals("id")){
                 identifier(ary, n+1, 3);
             }
         }
-        else if(ary[0].contains("write")){
+        else if(ary[0].equals("write")){
             writeFnk(ary, n+1);
         }
         else if(ary[1].contains("id") && ary.length >= 4){
@@ -142,7 +142,7 @@ public class Parser {
 		indent(n);
         System.out.printf("<term_tail>\n");
         if(i+2<= ary.length) {
-            if ((ary[i].contains("plus")) || (ary[i].contains("minus"))) {
+            if ((ary[i].equals("plus")) || (ary[i].equals("minus"))) {
 
                 add_op(ary, n+1, i);
                 i = term(ary, n+1, i + 2);
@@ -159,24 +159,26 @@ public class Parser {
 		indent(n);
         System.out.printf("<factor>\n");
         //lparen <expr> rparen |id|number
-        if(ary[i].contains("lParen")){
-			indent(n+1);
-            System.out.printf(ary[i-1] + "\n");
-            i = expr(ary, n+1, i+2);
-            //System.out.println(")");
-			indent(n+1);
-            System.out.printf(ary[i+3] + "\n");
-			indent(n);
-            System.out.printf("</factor>\n");
+		if(ary.length > i) {
+			if(ary[i].equals("lParen")){
+				indent(n+1);
+				System.out.printf(ary[i-1] + "\n");
+				i = expr(ary, n+1, i+2);
+				//System.out.println(")");
+				indent(n+1);
+				System.out.printf(ary[i+3] + "\n");
+				indent(n);
+				System.out.printf("</factor>\n");
 
-            return i+4;
-        }
-        else if(ary[i].contains("id")){
-            identifier(ary, n+1, i);
-        }
-        else if(ary[i].contains("number")){
-            numId(ary, n+1, i);
-        }
+				return i+4;
+			}
+			else if(ary[i].equals("id")){
+				identifier(ary, n+1, i);
+			}
+			else if(ary[i].equals("number")){
+				numId(ary, n+1, i);
+			}
+		}
 		indent(n);
         System.out.printf("</factor>\n");
         return i;
@@ -187,7 +189,7 @@ public class Parser {
         System.out.printf("<fact_tail>\n");
         //<mult_op> <factor> <fact_tail> | e
         if((i+2)<= ary.length) {
-        if((ary[i].contains("times"))||(ary[i].contains("div"))) {
+        if((ary[i].equals("times"))||(ary[i].equals("div"))) {
                 mult_op(ary, n+1, i);
                 i = factor(ary, n+1, i + 2);
                 fact_tail(ary, n+1, i);
@@ -201,7 +203,7 @@ public class Parser {
     void add_op(String[] ary, int n, int i){
 		indent(n);
         System.out.printf("<add_op>\n");
-        if(ary[i].contains("plus")){
+        if(ary[i].equals("plus")){
 			indent(n+1);
             System.out.printf("<plus>\n");
 			indent(n+2);
@@ -209,7 +211,7 @@ public class Parser {
 			indent(n+1);
             System.out.printf("</plus>\n");
         }
-        else if(ary[i].contains("minus")){
+        else if(ary[i].equals("minus")){
 			indent(n+1);
             System.out.printf("<minus>\n");
 			indent(n+2);
@@ -224,7 +226,7 @@ public class Parser {
     void mult_op(String[] ary, int n, int i){
 		indent(n);
         System.out.printf("<mult_op>\n");
-        if(ary[i].contains("times")) {
+        if(ary[i].equals("times")) {
 			indent(n+1);
             System.out.printf("<times>\n");
 			indent(n+2);
@@ -234,7 +236,7 @@ public class Parser {
 			indent(n);
             System.out.printf("</mult_op>\n");
         }
-        else if(ary[i].contains("div")){
+        else if(ary[i].equals("div")){
 			indent(n+1);
             System.out.printf("<div>\n");
 			indent(n+2);
