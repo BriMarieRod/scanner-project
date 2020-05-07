@@ -82,6 +82,7 @@ public class Parser {
         }
         else if(ary[1].contains("id") && ary.length >= 4){
             if(ary[3].contains("assign")){
+				indent(n+1);
                 System.out.printf("/////////////////////\n");
                 expr(ary, n+1, 5);
             }
@@ -170,7 +171,7 @@ public class Parser {
         //lparen <expr> rparen |id|number
         if(ary[i].contains("lParen")){
 			indent(n+1);
-            System.out.printf(ary[i-1]);
+            System.out.printf(ary[i-1] + "\n");
             i = expr(ary, n+1, i+2);
             //System.out.println(")");
 			indent(n+1);
