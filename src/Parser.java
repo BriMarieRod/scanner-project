@@ -15,26 +15,22 @@ public class Parser {
         String output = "";
         try (FileReader fr = new FileReader("test text.txt")) {
             int content;
-
+            System.out.printf("<Program>\n");
             while ((content = fr.read()) != -1) {
 
                 output = "";
                 output = sc.scan(fr, content, gra.start, gra, output);
                 String[] ary = ps.strArray(output);
-                //System.out.println(output);
 
-                /*for (int i = 0; i < ary.length; i++) {
-                    System.out.print(" "+i + "--" + ary[i]);
-                }*/
-
-                ps.program(ary);
+                ps.stmt_list(ary,1);
                 System.out.println(" ");
             }
+            System.out.printf("</Program>\n");
         } catch (IOException e) {
             System.out.println("file not found");
         }
         //call scan until end of file is reached
-        //System.out.println(output);
+
 
 
 
@@ -45,11 +41,6 @@ public class Parser {
         return ary;
     }
 
-    void program(String[] ary) {
-        System.out.printf("<Program>\n");
-        stmt_list(ary, 1);
-        System.out.printf("</Program>\n");
-    }
 	
     void stmt_list(String[] ary, int n) {
         if (ary.length > 0) {
