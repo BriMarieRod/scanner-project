@@ -175,7 +175,8 @@ public class Parser {
             i = expr(ary, n+1, i+2);
             //System.out.println(")");
 			indent(n+1);
-            System.out.printf(ary[i+3]);
+            System.out.printf(ary[i+3] + "\n");
+			indent(n);
             System.out.printf("</factor>\n");
 
             return i+4;
