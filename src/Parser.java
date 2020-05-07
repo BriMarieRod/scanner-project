@@ -21,20 +21,20 @@ public class Parser {
                 output = "";
                 output = sc.scan(fr, content, gra.start, gra, output);
                 String[] ary = ps.strArray(output);
-                System.out.println(output);
+                //System.out.println(output);
 
                 /*for (int i = 0; i < ary.length; i++) {
                     System.out.print(" "+i + "--" + ary[i]);
                 }*/
 
                 ps.program(ary);
-
+                System.out.println(" ");
             }
         } catch (IOException e) {
             System.out.println("file not found");
         }
         //call scan until end of file is reached
-        System.out.println(output);
+        //System.out.println(output);
 
 
 
@@ -58,7 +58,7 @@ public class Parser {
 			if(ary.length > 2) {
 				stmt(ary, n+1);
 			}
-			stmt_list(Arrays.copyOfRange(ary, 2, ary.length), n+1);
+			//stmt_list(Arrays.copyOfRange(ary, 2, ary.length), n+1);
 			indent(n);
             System.out.printf("</stmt_list>\n");
         }else{
@@ -80,13 +80,12 @@ public class Parser {
         else if(ary[0].equals("write")){
             writeFnk(ary, n+1);
         }
-        else if(ary[1].equals("id") && ary.length >= 4){
-            if(ary[3].equals("assign")){
-				indent(n+1);
-                System.out.printf("/////////////////////\n");
+        else if(ary[1].contains("id") && ary.length >= 4){
+            if(ary[3].contains("assign")){
+				//indent(n+1);
                 expr(ary, n+1, 5);
             }
-        }
+        }else{return;}
 		indent(n);
         System.out.printf("</stmt>\n");
     }
