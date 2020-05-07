@@ -21,7 +21,7 @@ public class Parser {
                 output = "";
                 output = sc.scan(fr, content, gra.start, gra, output);
                 String[] ary = ps.strArray(output);
-                System.out.println(output);
+                //System.out.println(output);
 
                 /*for (int i = 0; i < ary.length; i++) {
                     System.out.print(" "+i + "--" + ary[i]);
