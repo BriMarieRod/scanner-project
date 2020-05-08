@@ -1,9 +1,13 @@
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
 
 
 public class Parser {
+	
+	static List<String> statements = new ArrayList<String>();
 	
     public static void main(String args[]) {
 		
@@ -15,17 +19,23 @@ public class Parser {
         String output = "";
         try (FileReader fr = new FileReader("test text.txt")) {
             int content;
-            System.out.printf("<Program>\n");
+            //System.out.printf("<Program>\n");
+			
             while ((content = fr.read()) != -1) {
-
-                output = "";
+				output = "";
                 output = sc.scan(fr, content, gra.start, gra, output);
-                String[] ary = ps.strArray(output);
+				statements.add(output);
 
-                ps.stmt_list(ary,1);
-                System.out.println(" ");
+                //ps.stmt_list(ary,1);
+                //System.out.println(" ");
             }
-            System.out.printf("</Program>\n");
+            //System.out.printf("</Program>\n");
+			for(String s: statements) {
+				System.out.println(s);
+			}
+			String[] ary = ps.strArray(statements.get(0));
+			statements.remove(0);
+			ps.program(ary);
         } catch (IOException e) {
             System.out.println("file not found");
         }
@@ -40,6 +50,12 @@ public class Parser {
         String[] ary = str.split(" ");
         return ary;
     }
+	
+	void program(String[] ary) {
+		System.out.println("<Program>");
+		stmt_list(ary, 1);
+		System.out.println("</Program>");
+	}
 
 	
     void stmt_list(String[] ary, int n) {
@@ -49,7 +65,13 @@ public class Parser {
 			if(ary.length > 2) {
 				stmt(ary, n+1);
 			}
-			//stmt_list(Arrays.copyOfRange(ary, 2, ary.length), n+1);
+			try {
+				String[] newAry = strArray(statements.get(0));
+				statements.remove(0);
+				stmt_list(newAry, n+1);
+			} catch(Exception e) {
+				stmt_list(new String[0], n+1);
+			}
 			indent(n);
             System.out.printf("</stmt_list>\n");
         }else{
