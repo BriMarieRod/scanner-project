@@ -30,9 +30,9 @@ public class Parser {
                 //System.out.println(" ");
             }
             //System.out.printf("</Program>\n");
-			for(String s: statements) {
+			/*for(String s: statements) {
 				System.out.println(s);
-			}
+			}*/
 			String[] ary = ps.strArray(statements.get(0));
 			statements.remove(0);
 			ps.program(ary);
@@ -211,11 +211,11 @@ public class Parser {
         System.out.printf("<fact_tail>\n");
         //<mult_op> <factor> <fact_tail> | e
         if((i+2)<= ary.length) {
-        if((ary[i].equals("times"))||(ary[i].equals("div"))) {
-                mult_op(ary, n+1, i);
-                i = factor(ary, n+1, i + 2);
-                fact_tail(ary, n+1, i);
-            }
+			if((ary[i].equals("times"))||(ary[i].equals("div"))) {
+					mult_op(ary, n+1, i);
+					i = factor(ary, n+1, i + 2);
+					fact_tail(ary, n+1, i);
+			}
         }
 		indent(n);
         System.out.printf("</fact_tail>\n");
