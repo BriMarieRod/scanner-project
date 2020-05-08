@@ -19,7 +19,7 @@ public class Parser {
         Parser ps = new Parser();
 
         String output = "";
-        try (FileReader fr = new FileReader("test text.txt")) {
+        try (FileReader fr = new FileReader(args[0])) {
             int content;
             //System.out.printf("<Program>\n");
 			
