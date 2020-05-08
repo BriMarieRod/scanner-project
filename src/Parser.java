@@ -30,9 +30,9 @@ public class Parser {
                 //System.out.println(" ");
             }
             //System.out.printf("</Program>\n");
-			for(String s: statements) {
+			/*for(String s: statements) {
 				System.out.println(s);
-			}
+			}*/
 			String[] ary = ps.strArray(statements.get(0));
 			statements.remove(0);
 			ps.program(ary);
